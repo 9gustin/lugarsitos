@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import '../styles/globals.css'
 
 import app from '../services/firebase'
 

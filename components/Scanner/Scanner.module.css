@@ -1,0 +1,8 @@
+.scanner {
+    height: 100%;
+    overflow: hidden;
+}
+
+.btnClose {
+    z-index: 9;
+}
