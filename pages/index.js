@@ -30,5 +30,5 @@ const Test = (props) => {
 };
 
 export default function Home() {
-  return <Test />
+  return <p>hola</p>
 }
