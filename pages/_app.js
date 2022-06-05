@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import '../styles/globals.css'
 
+import {SessionProvider} from '../context/session'
+
 import app from '../services/firebase'
 
 function MyApp({ Component, pageProps }) {
@@ -20,7 +22,9 @@ function MyApp({ Component, pageProps }) {
       <link rel="apple-touch-icon" href="/apple-icon.png"></link>
       <meta name="theme-color" content="#317EFB"/>
     </Head>
-    <Component {...pageProps} />
+    <SessionProvider>
+      <Component {...pageProps} />
+    </SessionProvider>
     </>
   )
   

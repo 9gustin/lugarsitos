@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import {getKeyData, getElements} from '../services/firebase'
+import {getKeyData, getElements} from '../../services/firebase'
 
 export default function Read() {
     const [data, setData] = useState()
