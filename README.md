@@ -1,5 +1,13 @@
 # rnd pa
 
+## TODO: Now
+Create all places in DB
+Create key in DB
+
+Key with firebase: Auth
+Places in google maps
+Print QR's
+
 ## pending integrations
 
 Make it PWA
