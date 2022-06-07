@@ -11,7 +11,7 @@ export const getElements = async () => {
     if (isDev()) {
         q = collection(db, ELEMENTS_COLLECTION)
     } else {
-        q = query(collection(db, ELEMENTS_COLLECTION), where(ELEMENTS_FIELDS.DISCOVERED, '==', true));
+        q = query(collection(db, ELEMENTS_COLLECTION), where(ELEMENTS_FIELDS.ENABLED, '==', true));
     }
 
     const snap = await getDocs(q);
