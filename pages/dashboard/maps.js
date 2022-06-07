@@ -3,6 +3,8 @@ import { Wrapper, Status, useDeepCompareEffectForMaps } from "@googlemaps/react-
 
 import {getElements} from '../../services/firebase'
 
+import {useSession} from '../../context/session'
+
 const Map = ({children}) => {
   const ref = React.useRef(null);
   const [map, setMap] = React.useState();
@@ -59,7 +61,7 @@ const Marker = (options) => {
   return null;
 };
 
-export default function Home() {
+function Home() {
   const [state, setState] = React.useState([])
 
   React.useEffect(() => {
@@ -84,4 +86,16 @@ export default function Home() {
       ))}
     </Map>
   </Wrapper>)
+}
+
+export default function HomeLoad () {
+  const {user} = useSession()
+
+  React.useLayoutEffect(() => {
+    if (!user) [
+      window.location.href = '/'
+    ]
+  }, [])
+
+  return user ? <Home /> : null
 }

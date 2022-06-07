@@ -3,6 +3,7 @@ import { SessionContext } from './context'
 
 export const SessionProvider = ({ children }) => {
   const [user, setUser] = React.useState(null)
+
   const returnedValue = useMemo(() => ({user, setUser}), [user, setUser])
 
   return (
