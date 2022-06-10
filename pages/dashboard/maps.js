@@ -57,50 +57,57 @@ const Map = ({ children }) => {
   }
 
   return <>
-  {
-    data && (
-      <div style={{
-        position: 'absolute',
-        borderRadius: '6px 6px 0 0',
-        bottom: 0,
-        left: 10,
-        right: 70,
-        backgroundColor: '#fff',
-        zIndex: 9,
-        border: '1px solid #000',
-        maxWidth: '400px'
-        }}>
-        <CgCloseO color='#000' onClick={handleClose} style={{
-          position: 'absolute',
-          right: 0,
-          margin: 10,
-          height: '24px',
-          width: '24px',
-        }}/>
-        {data.imageUrl && (
-          <div style={{overflow: 'hidden', height: '300px', objectFit: 'contain'}}>
-            <img src={data.imageUrl} style={{width:'100%'}}/>
-          </div>
-        )}
+    {
+      data && (
         <div style={{
-          padding:'10px'
+          position: 'absolute',
+          borderRadius: '6px 6px 0 0',
+          bottom: 0,
+          left: 10,
+          right: 70,
+          backgroundColor: '#fff',
+          zIndex: 9,
+          border: '1px solid #000',
+          maxWidth: '400px',
+          maxHeight: '90%',
+          overflow: 'scroll'
         }}>
-        <h1 style={{fontWeight: 'bold', marginBottom: 8}}>{data.title}</h1>
-        <p>{
-        new Date(data.date.seconds*1000).toLocaleString(
-          "es",
-          {
-            day: "2-digit",
-            month:"long",
-            year: "numeric",
-            hour12: true,
-          }
-        )} </p>
-        <p style={{marginTop: 8}}>{data.description}</p>
+          <CgCloseO color='#000' onClick={handleClose} style={{
+            position: 'absolute',
+            right: 0,
+            margin: 10,
+            height: '24px',
+            width: '24px',
+          }} />
+          {data.imageUrl && (
+            <div style={{ overflow: 'hidden', height: '300px', objectFit: 'contain' }}>
+              <img src={data.imageUrl} style={{ width: '100%' }} />
+            </div>
+          )}
+          <div style={{
+            padding: '10px',
+            overflow: 'hidden'
+          }}>
+            <h1 style={{ fontWeight: 'bold', marginBottom: 8 }}>{data.title}</h1>
+            <p>{
+              new Date(data.date.seconds * 1000).toLocaleString(
+                "es",
+                {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                  hour12: true,
+                }
+              )} </p>
+            <p style={{
+              marginTop: 8
+
+            }}>{data.description}
+            </p>
+          </div>
         </div>
-      </div>
-    )
-  }
+      )
+    }
     <div ref={ref} style={{ width: '100%', height: '100vh' }} />
     {React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
