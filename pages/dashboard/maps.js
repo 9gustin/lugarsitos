@@ -52,8 +52,7 @@ const Map = ({ children }) => {
   const handleClose = () => {
     setData(null);
     map.setOptions({
-      center: CENTER,
-      zoom: 6
+      zoom: 8
     });
   }
 
@@ -67,23 +66,26 @@ const Map = ({ children }) => {
         left: 10,
         right: 70,
         backgroundColor: '#fff',
-        padding: '10px',
         zIndex: 9,
-        border: '1px solid #000'
+        border: '1px solid #000',
+        maxWidth: '400px'
         }}>
         <CgCloseO color='#000' onClick={handleClose} style={{
           position: 'absolute',
-          right: 10,
+          right: 0,
+          margin: 10,
           height: '24px',
           width: '24px',
         }}/>
         {data.imageUrl && (
-          <div>
-            <img src={data.imageUrl} />
+          <div style={{overflow: 'hidden', height: '300px', objectFit: 'contain'}}>
+            <img src={data.imageUrl} style={{width:'100%'}}/>
           </div>
         )}
-  
-        <h1>{data.title}</h1>
+        <div style={{
+          padding:'10px'
+        }}>
+        <h1 style={{fontWeight: 'bold', marginBottom: 8}}>{data.title}</h1>
         <p>{
         new Date(data.date.seconds*1000).toLocaleString(
           "es",
@@ -94,7 +96,8 @@ const Map = ({ children }) => {
             hour12: true,
           }
         )}</p>
-        <h2>{data.description}</h2>
+        <p style={{marginTop: 8}}>{data.description}</p>
+        </div>
       </div>
     )
   }
