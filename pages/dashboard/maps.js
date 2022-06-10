@@ -22,13 +22,13 @@ const Map = ({children}) => {
           lat: -31.274782,
           lng: -64.304577,
       },
-      zoom: 10
+      zoom: 5
       });
     }
   }, [map]);
 
   return <>   
-    <div ref={ref} style={{width: '100vh', height: '100vh'}}/> 
+    <div ref={ref} style={{width: '100%', height: '100vh'}}/> 
     {React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
         // set the map prop on the child component
@@ -66,23 +66,24 @@ function Home() {
 
   React.useEffect(() => {
     getElements().then(data => {
-      const mapp = data.map(({location}) => ({
+      console.warn(data)
+      const mapp = data.map(({location, title, description, date, imageUrl}) => ({
         lat: location.latitude,
-        lng: location.longitude
+        lng: location.longitude,
+        title, description, date, imageUrl
       }));
       setState(mapp)
     })
   }, [])
 
   const render = (status) => {
-    console.warn("st", status)
     return <h1>{status}</h1>;
   };
 
   return (<Wrapper apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY} render={render}>
     <Map>
       {state.map(position => (
-        <Marker position={position} />
+        <Marker position={position} key={'1'}/>
       ))}
     </Map>
   </Wrapper>)
@@ -90,12 +91,19 @@ function Home() {
 
 export default function HomeLoad () {
   const {user} = useSession()
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => setMounted(true), []);
 
   React.useLayoutEffect(() => {
     if (!user) [
       window.location.href = '/'
     ]
   }, [])
+
+  if (!mounted) return null;
+
+
 
   return user ? <Home /> : null
 }
