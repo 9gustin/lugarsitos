@@ -95,7 +95,7 @@ const Map = ({ children }) => {
             year: "numeric",
             hour12: true,
           }
-        )}</p>
+        )} </p>
         <p style={{marginTop: 8}}>{data.description}</p>
         </div>
       </div>
