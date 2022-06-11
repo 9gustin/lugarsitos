@@ -4,9 +4,9 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "rnd pa",
-    "short_name": "rnd pa",
-    "description": "full random",
+    "name": "lugarsitos",
+    "short_name": "lugarsitos",
+    "description": "lugarsitos",
     "icons": [
         {
             "src": "/icon-192x192.png",
