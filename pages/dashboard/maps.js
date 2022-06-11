@@ -69,8 +69,7 @@ const Map = ({ children }) => {
           zIndex: 9,
           border: '1px solid #000',
           maxWidth: '400px',
-          maxHeight: '90%',
-          overflow: 'scroll'
+          maxHeight: '90%'
         }}>
           <CgCloseO color='#000' onClick={handleClose} style={{
             position: 'absolute',
